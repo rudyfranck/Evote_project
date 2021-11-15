@@ -1,4 +1,4 @@
-import 'package:evote_app/page/widgets/time_ago.dart';
+import 'package:timeago/timeago.dart' as timeago;
 import 'package:evote_client/graphql/poll.data.gql.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ import 'package:evote_app/page/widgets/stop_time.dart';
   final GFetchPollData_polls poll;
    const PollList({Key? key, required this.poll  }) : super (key: key);
 
-
   @override
   Widget build(BuildContext context){
     var now = DateTime.now();
@@ -18,6 +17,7 @@ import 'package:evote_app/page/widgets/stop_time.dart';
     DateTime startDate = DateTime.parse(ct);
     var endDate = (startDate.add(Duration(days: poll.duration )));
     var dur = endDate.difference(now).inMicroseconds;
+    var timeAgo = timeago.format(endDate);
     if( dur >=1) {
       return Column(
         children: [
@@ -134,6 +134,11 @@ import 'package:evote_app/page/widgets/stop_time.dart';
                         builder: (context) => PollReport(poll: poll,),
                       );
                     },
+                  ),
+                  Text(timeAgo,
+                    style: TextStyle(
+                      color: Colors.grey.shade500
+                    ),
                   ),
                 ],
               )
