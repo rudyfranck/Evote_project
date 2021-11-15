@@ -1,0 +1,102 @@
+query FetchPoll {
+    polls{
+        _id
+        title
+        description
+        duration
+        createdAt
+        updatedAt
+        candidate{
+            _id
+            username
+            email
+            role
+            status
+            password
+            __typename
+            voters{
+                _id
+                username
+                email
+                role
+                status
+                password
+                __typename
+            }
+        }
+        __typename
+    }
+}
+
+query FecthUsers{
+  users(offset:0, limit:100){
+    _id
+    username
+    email
+    role
+    status
+    voters{
+    _id
+    username
+    email
+    role
+    status
+    }
+   }
+}
+
+query FecthUser($id:String!){
+  user(_id:$id){
+    _id
+    username
+    email
+    role
+    status
+    updatedAt
+    createdAt
+    __typename
+  }
+}
+
+query pollVoters($_id:String! ){
+  pollVoters(_id: $_id)
+}
+
+
+mutation register($input: CreateUserInput!){
+  register (input: $input){
+    _id
+    username
+    email
+    password
+    status
+    role
+    createdAt
+    updatedAt
+    __typename
+    voters{
+    _id
+    username
+    email
+    role
+    status
+    }
+  }
+}
+
+mutation login($input: LoginUserInput!){
+  login(input: $input){
+    token
+  }
+}
+
+
+
+mutation vote($user_id:String!,$poll_id:String!,$candidate_id:String!){
+  vote(
+    user_id:$user_id
+    poll_id:$poll_id
+  	candidate_id:$candidate_id)
+  
+}
+

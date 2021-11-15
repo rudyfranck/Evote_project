@@ -1,0 +1,101 @@
+directive @isAuthenticated on FIELD | FIELD_DEFINITION
+
+directive @hasRole(role: String) on FIELD | FIELD_DEFINITION
+
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+input CreatePollInput {
+  title: String!
+  description: String!
+  duration: Int!
+}
+
+input CreateUserInput {
+  username: String!
+  password: String!
+  email: String!
+}
+
+scalar Date
+
+type LoginResponse {
+  token: String!
+}
+
+input LoginUserInput {
+  username: String!
+  password: String!
+}
+
+type Mutation {
+  createPoll(input: CreatePollInput!): Poll
+  updatePoll(_id: String!, input: UpdatePollInput!): Boolean
+  deletePoll(_id: String!): Boolean
+  deletePolls: Boolean
+  addCandidateInPoll(poll_id: String!, user_id: String!): Boolean
+  vote(user_id: String!, poll_id: String, candidate_id: String): Boolean
+  register(input: CreateUserInput!): User
+  updateUser(_id: String!, input: UpdateUserInput!): Boolean
+  deleteUser(_id: String!): Boolean
+  deleteUsers: Boolean!
+  login(input: LoginUserInput!): LoginResponse
+  setRole(_id: String!, role: RoleEnum!): Boolean
+}
+
+type Poll {
+  _id: String!
+  title: String!
+  description: String!
+  duration: Int!
+  candidate: [User!]
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Query {
+  polls: [Poll!]
+  poll(_id: String!): Poll
+  pollVoters(_id: String!): Int
+  hello: String!
+  me: User
+  users(offset: Int!, limit: Int!): [User!]
+  user(_id: String!): User
+}
+
+enum RoleEnum {
+  MEMBER
+  ADMIN
+}
+
+type Subscription {
+  userCreated: User
+}
+
+input UpdatePollInput {
+  title: String
+  description: String
+  duration: Int
+}
+
+input UpdateUserInput {
+  username: String
+  password: String
+  email: String
+}
+
+type User {
+  _id: String!
+  username: String!
+  password: String!
+  email: String!
+  role: RoleEnum!
+  status: Boolean!
+  voters: [User]
+  createdAt: String!
+  updatedAt: String!
+}
+
