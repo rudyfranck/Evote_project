@@ -9,11 +9,7 @@ import {
 } from 'typeorm'
 import { IsString, IsNotEmpty } from 'class-validator'
 import uuid = require('uuid')
-import { isTypedArray } from 'util/types'
 import { User } from 'src/user/user.entity'
-import { Type } from 'class-transformer';
-import { isNumber } from 'lodash'
-
 @Entity()
 export class Poll {
 	@ObjectIdColumn()

@@ -1,8 +1,8 @@
-import 'package:evote_app/page/widgets/candidate_list.dart';
+import 'package:evote_app/page/widgets/candidate/candidate_list.dart';
 import 'package:evote_app/page/widgets/header_widget.dart';
-import 'package:evote_app/page/widgets/my_app_bar.dart';
-import 'package:evote_app/page/widgets/nav_bar.dart';
-import 'package:evote_app/page/widgets/nor_candidate_in_list.dart';
+import 'package:evote_app/common/my_app_bar.dart';
+import 'package:evote_app/common/nav_bar.dart';
+import 'package:evote_app/page/widgets/candidate/nor_candidate_in_list.dart';
 import 'package:evote_client/graphql/poll.data.gql.dart';
 import 'package:evote_client/polls_client.dart';
 import 'package:flutter/cupertino.dart';

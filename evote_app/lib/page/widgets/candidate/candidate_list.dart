@@ -18,8 +18,6 @@ class CandidateList extends StatelessWidget {
 
   CandidateList({Key? key, required this.pollCandidate,required this.poll}): super (key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     void vote (BuildContext context){
@@ -144,22 +142,9 @@ class CandidateList extends StatelessWidget {
                                 ),
                                 onPressed: () {
                                   vote(context);
-
                                 },
                               ),
                             ),
-                            // TextButton(
-                            //
-                            //   child: const Text('VOTE',
-                            //     style: TextStyle(
-                            //         color: Colors.purple
-                            //     ),
-                            //   ),
-                            //   onPressed: ()  {
-                            //       vote(context);
-                            //     }
-                            //
-                            // ),
                             const SizedBox(width: 8),
                           ],
                         )
@@ -187,7 +172,7 @@ class ReconnectingOverlay extends StatelessWidget {
   Widget build(BuildContext context) => Center(
     child: Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: const [
         CircularProgressIndicator(),
         SizedBox(height: 12),
         Text(

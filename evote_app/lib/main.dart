@@ -6,7 +6,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:get_it/get_it.dart';
 import 'package:evote_client/polls_client.dart';
 
-
 void main() {
   GetIt.instance.registerSingleton<Client>(
       initClient('http://192.168.1.34:3000/graphql'));
@@ -31,7 +30,8 @@ class Evote extends StatelessWidget {
       ),
      initialRoute: '/',
       routes: {
-        '/':(_) => const SplashScreen(title: 'login',)
+        '/':(_) => const SplashScreen(title: 'login',),
+
       },
 
     );

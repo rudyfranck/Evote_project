@@ -29,6 +29,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GRoleEnum.serializer)
       ..add(GUpdatePollInput.serializer)
       ..add(GUpdateUserInput.serializer)
+      ..add(GaddCandidateData.serializer)
+      ..add(GaddCandidateReq.serializer)
+      ..add(GaddCandidateVars.serializer)
+      ..add(GcreatePollData.serializer)
+      ..add(GcreatePollData_createPoll.serializer)
+      ..add(GcreatePollReq.serializer)
+      ..add(GcreatePollVars.serializer)
+      ..add(GdeletePollData.serializer)
+      ..add(GdeletePollReq.serializer)
+      ..add(GdeletePollVars.serializer)
       ..add(GloginData.serializer)
       ..add(GloginData_login.serializer)
       ..add(GloginReq.serializer)
@@ -42,6 +52,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GregisterReq.serializer)
       ..add(GregisterVars.serializer)
       ..add(GvoteData.serializer)
+      ..add(GvoteData_vote.serializer)
+      ..add(GvoteData_vote_candidate.serializer)
+      ..add(GvoteData_vote_candidate_voters.serializer)
       ..add(GvoteReq.serializer)
       ..add(GvoteVars.serializer)
       ..addBuilderFactory(
@@ -67,7 +80,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GregisterData_register_voters)]),
-          () => new ListBuilder<GregisterData_register_voters>()))
+          () => new ListBuilder<GregisterData_register_voters>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GvoteData_vote_candidate)]),
+          () => new ListBuilder<GvoteData_vote_candidate>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GvoteData_vote_candidate_voters)]),
+          () => new ListBuilder<GvoteData_vote_candidate_voters>()))
     .build();
 
 // ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

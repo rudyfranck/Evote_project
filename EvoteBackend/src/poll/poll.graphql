@@ -4,7 +4,6 @@ input CreatePollInput {
 	title: String!
 	description: String!
 	duration: Int!
-	
 }
 
 input UpdatePollInput {
@@ -27,15 +26,16 @@ type Query {
 	polls: [Poll!]
 	poll(_id: String!): Poll
 	pollVoters(_id: String!): Int
+	addCandidateInPoll(poll_id: String!, user_id: String!): Boolean
+	vote(user_id: String!, poll_id: String, candidate_id: String): Boolean
 }
 
 type Mutation {
-	createPoll(input: CreatePollInput!): Poll
+	createPoll(input: CreatePollInput!, user_id: String ): Poll
 	updatePoll(_id: String!, input: UpdatePollInput!): Boolean
-	deletePoll(_id: String!): Boolean
+	deletePoll(_id: String!): Poll
 	deletePolls: Boolean
-    addCandidateInPoll(poll_id: String!, user_id: String!): Boolean
-	vote(user_id: String!, poll_id: String, candidate_id: String): Boolean
+    
 	
 	
 }

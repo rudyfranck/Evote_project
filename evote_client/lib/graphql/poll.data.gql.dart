@@ -270,6 +270,134 @@ abstract class GpollVotersData
       _i1.serializers.deserializeWith(GpollVotersData.serializer, json);
 }
 
+abstract class GaddCandidateData
+    implements Built<GaddCandidateData, GaddCandidateDataBuilder> {
+  GaddCandidateData._();
+
+  factory GaddCandidateData([Function(GaddCandidateDataBuilder b) updates]) =
+      _$GaddCandidateData;
+
+  static void _initializeBuilder(GaddCandidateDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  bool? get addCandidate;
+  static Serializer<GaddCandidateData> get serializer =>
+      _$gaddCandidateDataSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GaddCandidateData.serializer, this)
+          as Map<String, dynamic>);
+  static GaddCandidateData? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GaddCandidateData.serializer, json);
+}
+
+abstract class GvoteData implements Built<GvoteData, GvoteDataBuilder> {
+  GvoteData._();
+
+  factory GvoteData([Function(GvoteDataBuilder b) updates]) = _$GvoteData;
+
+  static void _initializeBuilder(GvoteDataBuilder b) =>
+      b..G__typename = 'Query';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  GvoteData_vote? get vote;
+  static Serializer<GvoteData> get serializer => _$gvoteDataSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GvoteData.serializer, this)
+          as Map<String, dynamic>);
+  static GvoteData? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GvoteData.serializer, json);
+}
+
+abstract class GvoteData_vote
+    implements Built<GvoteData_vote, GvoteData_voteBuilder> {
+  GvoteData_vote._();
+
+  factory GvoteData_vote([Function(GvoteData_voteBuilder b) updates]) =
+      _$GvoteData_vote;
+
+  static void _initializeBuilder(GvoteData_voteBuilder b) =>
+      b..G__typename = 'Poll';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  @BuiltValueField(wireName: '_id')
+  String get G_id;
+  String get title;
+  String get description;
+  int get duration;
+  _i2.GDate get createdAt;
+  _i2.GDate get updatedAt;
+  BuiltList<GvoteData_vote_candidate>? get candidate;
+  static Serializer<GvoteData_vote> get serializer => _$gvoteDataVoteSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GvoteData_vote.serializer, this)
+          as Map<String, dynamic>);
+  static GvoteData_vote? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GvoteData_vote.serializer, json);
+}
+
+abstract class GvoteData_vote_candidate
+    implements
+        Built<GvoteData_vote_candidate, GvoteData_vote_candidateBuilder> {
+  GvoteData_vote_candidate._();
+
+  factory GvoteData_vote_candidate(
+          [Function(GvoteData_vote_candidateBuilder b) updates]) =
+      _$GvoteData_vote_candidate;
+
+  static void _initializeBuilder(GvoteData_vote_candidateBuilder b) =>
+      b..G__typename = 'User';
+  @BuiltValueField(wireName: '_id')
+  String get G_id;
+  String get username;
+  String get email;
+  _i2.GRoleEnum get role;
+  bool get status;
+  String get password;
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  BuiltList<GvoteData_vote_candidate_voters>? get voters;
+  static Serializer<GvoteData_vote_candidate> get serializer =>
+      _$gvoteDataVoteCandidateSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GvoteData_vote_candidate.serializer, this)
+          as Map<String, dynamic>);
+  static GvoteData_vote_candidate? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GvoteData_vote_candidate.serializer, json);
+}
+
+abstract class GvoteData_vote_candidate_voters
+    implements
+        Built<GvoteData_vote_candidate_voters,
+            GvoteData_vote_candidate_votersBuilder> {
+  GvoteData_vote_candidate_voters._();
+
+  factory GvoteData_vote_candidate_voters(
+          [Function(GvoteData_vote_candidate_votersBuilder b) updates]) =
+      _$GvoteData_vote_candidate_voters;
+
+  static void _initializeBuilder(GvoteData_vote_candidate_votersBuilder b) =>
+      b..G__typename = 'User';
+  @BuiltValueField(wireName: '_id')
+  String get G_id;
+  String get username;
+  String get email;
+  _i2.GRoleEnum get role;
+  bool get status;
+  String get password;
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  static Serializer<GvoteData_vote_candidate_voters> get serializer =>
+      _$gvoteDataVoteCandidateVotersSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers
+          .serializeWith(GvoteData_vote_candidate_voters.serializer, this)
+      as Map<String, dynamic>);
+  static GvoteData_vote_candidate_voters? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GvoteData_vote_candidate_voters.serializer, json);
+}
+
 abstract class GregisterData
     implements Built<GregisterData, GregisterDataBuilder> {
   GregisterData._();
@@ -389,20 +517,73 @@ abstract class GloginData_login
       _i1.serializers.deserializeWith(GloginData_login.serializer, json);
 }
 
-abstract class GvoteData implements Built<GvoteData, GvoteDataBuilder> {
-  GvoteData._();
+abstract class GdeletePollData
+    implements Built<GdeletePollData, GdeletePollDataBuilder> {
+  GdeletePollData._();
 
-  factory GvoteData([Function(GvoteDataBuilder b) updates]) = _$GvoteData;
+  factory GdeletePollData([Function(GdeletePollDataBuilder b) updates]) =
+      _$GdeletePollData;
 
-  static void _initializeBuilder(GvoteDataBuilder b) =>
+  static void _initializeBuilder(GdeletePollDataBuilder b) =>
       b..G__typename = 'Mutation';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  bool? get vote;
-  static Serializer<GvoteData> get serializer => _$gvoteDataSerializer;
+  bool? get deletePoll;
+  static Serializer<GdeletePollData> get serializer =>
+      _$gdeletePollDataSerializer;
   Map<String, dynamic> toJson() =>
-      (_i1.serializers.serializeWith(GvoteData.serializer, this)
+      (_i1.serializers.serializeWith(GdeletePollData.serializer, this)
           as Map<String, dynamic>);
-  static GvoteData? fromJson(Map<String, dynamic> json) =>
-      _i1.serializers.deserializeWith(GvoteData.serializer, json);
+  static GdeletePollData? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GdeletePollData.serializer, json);
+}
+
+abstract class GcreatePollData
+    implements Built<GcreatePollData, GcreatePollDataBuilder> {
+  GcreatePollData._();
+
+  factory GcreatePollData([Function(GcreatePollDataBuilder b) updates]) =
+      _$GcreatePollData;
+
+  static void _initializeBuilder(GcreatePollDataBuilder b) =>
+      b..G__typename = 'Mutation';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  GcreatePollData_createPoll? get createPoll;
+  static Serializer<GcreatePollData> get serializer =>
+      _$gcreatePollDataSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GcreatePollData.serializer, this)
+          as Map<String, dynamic>);
+  static GcreatePollData? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GcreatePollData.serializer, json);
+}
+
+abstract class GcreatePollData_createPoll
+    implements
+        Built<GcreatePollData_createPoll, GcreatePollData_createPollBuilder> {
+  GcreatePollData_createPoll._();
+
+  factory GcreatePollData_createPoll(
+          [Function(GcreatePollData_createPollBuilder b) updates]) =
+      _$GcreatePollData_createPoll;
+
+  static void _initializeBuilder(GcreatePollData_createPollBuilder b) =>
+      b..G__typename = 'Poll';
+  @BuiltValueField(wireName: '_id')
+  String get G_id;
+  String get title;
+  int get duration;
+  String get description;
+  _i2.GDate get createdAt;
+  _i2.GDate get updatedAt;
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  static Serializer<GcreatePollData_createPoll> get serializer =>
+      _$gcreatePollDataCreatePollSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+      GcreatePollData_createPoll.serializer, this) as Map<String, dynamic>);
+  static GcreatePollData_createPoll? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers
+          .deserializeWith(GcreatePollData_createPoll.serializer, json);
 }

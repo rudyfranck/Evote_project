@@ -161,6 +161,78 @@ abstract class GpollVotersReq
       _i6.serializers.deserializeWith(GpollVotersReq.serializer, json);
 }
 
+abstract class GaddCandidateReq
+    implements
+        Built<GaddCandidateReq, GaddCandidateReqBuilder>,
+        _i1.OperationRequest<_i2.GaddCandidateData, _i3.GaddCandidateVars> {
+  GaddCandidateReq._();
+
+  factory GaddCandidateReq([Function(GaddCandidateReqBuilder b) updates]) =
+      _$GaddCandidateReq;
+
+  static void _initializeBuilder(GaddCandidateReqBuilder b) => b
+    ..operation =
+        _i4.Operation(document: _i5.document, operationName: 'addCandidate')
+    ..executeOnListen = true;
+  _i3.GaddCandidateVars get vars;
+  _i4.Operation get operation;
+  _i4.Request get execRequest =>
+      _i4.Request(operation: operation, variables: vars.toJson());
+  String? get requestId;
+  @BuiltValueField(serialize: false)
+  _i2.GaddCandidateData? Function(
+      _i2.GaddCandidateData?, _i2.GaddCandidateData?)? get updateResult;
+  _i2.GaddCandidateData? get optimisticResponse;
+  String? get updateCacheHandlerKey;
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  _i1.FetchPolicy? get fetchPolicy;
+  bool get executeOnListen;
+  @override
+  _i2.GaddCandidateData? parseData(Map<String, dynamic> json) =>
+      _i2.GaddCandidateData.fromJson(json);
+  static Serializer<GaddCandidateReq> get serializer =>
+      _$gaddCandidateReqSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GaddCandidateReq.serializer, this)
+          as Map<String, dynamic>);
+  static GaddCandidateReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(GaddCandidateReq.serializer, json);
+}
+
+abstract class GvoteReq
+    implements
+        Built<GvoteReq, GvoteReqBuilder>,
+        _i1.OperationRequest<_i2.GvoteData, _i3.GvoteVars> {
+  GvoteReq._();
+
+  factory GvoteReq([Function(GvoteReqBuilder b) updates]) = _$GvoteReq;
+
+  static void _initializeBuilder(GvoteReqBuilder b) => b
+    ..operation = _i4.Operation(document: _i5.document, operationName: 'vote')
+    ..executeOnListen = true;
+  _i3.GvoteVars get vars;
+  _i4.Operation get operation;
+  _i4.Request get execRequest =>
+      _i4.Request(operation: operation, variables: vars.toJson());
+  String? get requestId;
+  @BuiltValueField(serialize: false)
+  _i2.GvoteData? Function(_i2.GvoteData?, _i2.GvoteData?)? get updateResult;
+  _i2.GvoteData? get optimisticResponse;
+  String? get updateCacheHandlerKey;
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  _i1.FetchPolicy? get fetchPolicy;
+  bool get executeOnListen;
+  @override
+  _i2.GvoteData? parseData(Map<String, dynamic> json) =>
+      _i2.GvoteData.fromJson(json);
+  static Serializer<GvoteReq> get serializer => _$gvoteReqSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GvoteReq.serializer, this)
+          as Map<String, dynamic>);
+  static GvoteReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(GvoteReq.serializer, json);
+}
+
 abstract class GregisterReq
     implements
         Built<GregisterReq, GregisterReqBuilder>,
@@ -232,36 +304,78 @@ abstract class GloginReq
       _i6.serializers.deserializeWith(GloginReq.serializer, json);
 }
 
-abstract class GvoteReq
+abstract class GdeletePollReq
     implements
-        Built<GvoteReq, GvoteReqBuilder>,
-        _i1.OperationRequest<_i2.GvoteData, _i3.GvoteVars> {
-  GvoteReq._();
+        Built<GdeletePollReq, GdeletePollReqBuilder>,
+        _i1.OperationRequest<_i2.GdeletePollData, _i3.GdeletePollVars> {
+  GdeletePollReq._();
 
-  factory GvoteReq([Function(GvoteReqBuilder b) updates]) = _$GvoteReq;
+  factory GdeletePollReq([Function(GdeletePollReqBuilder b) updates]) =
+      _$GdeletePollReq;
 
-  static void _initializeBuilder(GvoteReqBuilder b) => b
-    ..operation = _i4.Operation(document: _i5.document, operationName: 'vote')
+  static void _initializeBuilder(GdeletePollReqBuilder b) => b
+    ..operation =
+        _i4.Operation(document: _i5.document, operationName: 'deletePoll')
     ..executeOnListen = true;
-  _i3.GvoteVars get vars;
+  _i3.GdeletePollVars get vars;
   _i4.Operation get operation;
   _i4.Request get execRequest =>
       _i4.Request(operation: operation, variables: vars.toJson());
   String? get requestId;
   @BuiltValueField(serialize: false)
-  _i2.GvoteData? Function(_i2.GvoteData?, _i2.GvoteData?)? get updateResult;
-  _i2.GvoteData? get optimisticResponse;
+  _i2.GdeletePollData? Function(_i2.GdeletePollData?, _i2.GdeletePollData?)?
+      get updateResult;
+  _i2.GdeletePollData? get optimisticResponse;
   String? get updateCacheHandlerKey;
   Map<String, dynamic>? get updateCacheHandlerContext;
   _i1.FetchPolicy? get fetchPolicy;
   bool get executeOnListen;
   @override
-  _i2.GvoteData? parseData(Map<String, dynamic> json) =>
-      _i2.GvoteData.fromJson(json);
-  static Serializer<GvoteReq> get serializer => _$gvoteReqSerializer;
+  _i2.GdeletePollData? parseData(Map<String, dynamic> json) =>
+      _i2.GdeletePollData.fromJson(json);
+  static Serializer<GdeletePollReq> get serializer =>
+      _$gdeletePollReqSerializer;
   Map<String, dynamic> toJson() =>
-      (_i6.serializers.serializeWith(GvoteReq.serializer, this)
+      (_i6.serializers.serializeWith(GdeletePollReq.serializer, this)
           as Map<String, dynamic>);
-  static GvoteReq? fromJson(Map<String, dynamic> json) =>
-      _i6.serializers.deserializeWith(GvoteReq.serializer, json);
+  static GdeletePollReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(GdeletePollReq.serializer, json);
+}
+
+abstract class GcreatePollReq
+    implements
+        Built<GcreatePollReq, GcreatePollReqBuilder>,
+        _i1.OperationRequest<_i2.GcreatePollData, _i3.GcreatePollVars> {
+  GcreatePollReq._();
+
+  factory GcreatePollReq([Function(GcreatePollReqBuilder b) updates]) =
+      _$GcreatePollReq;
+
+  static void _initializeBuilder(GcreatePollReqBuilder b) => b
+    ..operation =
+        _i4.Operation(document: _i5.document, operationName: 'createPoll')
+    ..executeOnListen = true;
+  _i3.GcreatePollVars get vars;
+  _i4.Operation get operation;
+  _i4.Request get execRequest =>
+      _i4.Request(operation: operation, variables: vars.toJson());
+  String? get requestId;
+  @BuiltValueField(serialize: false)
+  _i2.GcreatePollData? Function(_i2.GcreatePollData?, _i2.GcreatePollData?)?
+      get updateResult;
+  _i2.GcreatePollData? get optimisticResponse;
+  String? get updateCacheHandlerKey;
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  _i1.FetchPolicy? get fetchPolicy;
+  bool get executeOnListen;
+  @override
+  _i2.GcreatePollData? parseData(Map<String, dynamic> json) =>
+      _i2.GcreatePollData.fromJson(json);
+  static Serializer<GcreatePollReq> get serializer =>
+      _$gcreatePollReqSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GcreatePollReq.serializer, this)
+          as Map<String, dynamic>);
+  static GcreatePollReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(GcreatePollReq.serializer, json);
 }

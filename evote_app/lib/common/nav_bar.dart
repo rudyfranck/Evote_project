@@ -1,8 +1,9 @@
+import 'package:evote_app/admin_panel/all_poll_list.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
-import '../home_page.dart';
-import '../login_page.dart';
-import '../profile_page.dart';
+import '../page/home_page.dart';
+import '../page/login_page.dart';
+import '../page/profile_page.dart';
 
 class NavBar extends StatelessWidget implements PreferredSizeWidget {
   final LocalStorage storage =  new LocalStorage('Auth');
@@ -52,6 +53,16 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()),);
               },
             ),
+
+            Divider(color: Theme.of(context).primaryColor, height: 1,),
+            ListTile(
+              leading: Icon(Icons.eleven_mp_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+              title: Text('Poll',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+              onTap: () {
+                Navigator.push( context, MaterialPageRoute(builder: (context) =>  AllPoll()), );
+              },
+            ),
+
             Divider(color: Theme.of(context).primaryColor, height: 1,),
             ListTile(
               leading: Icon(Icons.person, size: _drawerIconSize,color: Theme.of(context).accentColor,),

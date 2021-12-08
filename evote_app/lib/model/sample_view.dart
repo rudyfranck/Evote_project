@@ -1,5 +1,5 @@
 /// Package import
-import 'package:evote_app/page/widgets/poll_report.dart';
+import 'package:evote_app/page/widgets/poll/poll_report.dart';
 import 'package:evote_client/polls_client.dart';
 import 'package:flutter/material.dart';
 

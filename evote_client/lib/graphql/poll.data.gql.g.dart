@@ -29,6 +29,16 @@ Serializer<GFecthUserData_user> _$gFecthUserDataUserSerializer =
     new _$GFecthUserData_userSerializer();
 Serializer<GpollVotersData> _$gpollVotersDataSerializer =
     new _$GpollVotersDataSerializer();
+Serializer<GaddCandidateData> _$gaddCandidateDataSerializer =
+    new _$GaddCandidateDataSerializer();
+Serializer<GvoteData> _$gvoteDataSerializer = new _$GvoteDataSerializer();
+Serializer<GvoteData_vote> _$gvoteDataVoteSerializer =
+    new _$GvoteData_voteSerializer();
+Serializer<GvoteData_vote_candidate> _$gvoteDataVoteCandidateSerializer =
+    new _$GvoteData_vote_candidateSerializer();
+Serializer<GvoteData_vote_candidate_voters>
+    _$gvoteDataVoteCandidateVotersSerializer =
+    new _$GvoteData_vote_candidate_votersSerializer();
 Serializer<GregisterData> _$gregisterDataSerializer =
     new _$GregisterDataSerializer();
 Serializer<GregisterData_register> _$gregisterDataRegisterSerializer =
@@ -39,7 +49,12 @@ Serializer<GregisterData_register_voters>
 Serializer<GloginData> _$gloginDataSerializer = new _$GloginDataSerializer();
 Serializer<GloginData_login> _$gloginDataLoginSerializer =
     new _$GloginData_loginSerializer();
-Serializer<GvoteData> _$gvoteDataSerializer = new _$GvoteDataSerializer();
+Serializer<GdeletePollData> _$gdeletePollDataSerializer =
+    new _$GdeletePollDataSerializer();
+Serializer<GcreatePollData> _$gcreatePollDataSerializer =
+    new _$GcreatePollDataSerializer();
+Serializer<GcreatePollData_createPoll> _$gcreatePollDataCreatePollSerializer =
+    new _$GcreatePollData_createPollSerializer();
 
 class _$GFetchPollDataSerializer
     implements StructuredSerializer<GFetchPollData> {
@@ -812,6 +827,394 @@ class _$GpollVotersDataSerializer
   }
 }
 
+class _$GaddCandidateDataSerializer
+    implements StructuredSerializer<GaddCandidateData> {
+  @override
+  final Iterable<Type> types = const [GaddCandidateData, _$GaddCandidateData];
+  @override
+  final String wireName = 'GaddCandidateData';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GaddCandidateData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.addCandidate;
+    if (value != null) {
+      result
+        ..add('addCandidate')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    return result;
+  }
+
+  @override
+  GaddCandidateData deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GaddCandidateDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'addCandidate':
+          result.addCandidate = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GvoteDataSerializer implements StructuredSerializer<GvoteData> {
+  @override
+  final Iterable<Type> types = const [GvoteData, _$GvoteData];
+  @override
+  final String wireName = 'GvoteData';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GvoteData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.vote;
+    if (value != null) {
+      result
+        ..add('vote')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GvoteData_vote)));
+    }
+    return result;
+  }
+
+  @override
+  GvoteData deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GvoteDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'vote':
+          result.vote.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(GvoteData_vote))!
+              as GvoteData_vote);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GvoteData_voteSerializer
+    implements StructuredSerializer<GvoteData_vote> {
+  @override
+  final Iterable<Type> types = const [GvoteData_vote, _$GvoteData_vote];
+  @override
+  final String wireName = 'GvoteData_vote';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GvoteData_vote object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      '_id',
+      serializers.serialize(object.G_id, specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
+      'duration',
+      serializers.serialize(object.duration,
+          specifiedType: const FullType(int)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(_i2.GDate)),
+      'updatedAt',
+      serializers.serialize(object.updatedAt,
+          specifiedType: const FullType(_i2.GDate)),
+    ];
+    Object? value;
+    value = object.candidate;
+    if (value != null) {
+      result
+        ..add('candidate')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType(GvoteData_vote_candidate)])));
+    }
+    return result;
+  }
+
+  @override
+  GvoteData_vote deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GvoteData_voteBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case '_id':
+          result.G_id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'duration':
+          result.duration = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'createdAt':
+          result.createdAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GDate))! as _i2.GDate);
+          break;
+        case 'updatedAt':
+          result.updatedAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GDate))! as _i2.GDate);
+          break;
+        case 'candidate':
+          result.candidate.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GvoteData_vote_candidate)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GvoteData_vote_candidateSerializer
+    implements StructuredSerializer<GvoteData_vote_candidate> {
+  @override
+  final Iterable<Type> types = const [
+    GvoteData_vote_candidate,
+    _$GvoteData_vote_candidate
+  ];
+  @override
+  final String wireName = 'GvoteData_vote_candidate';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GvoteData_vote_candidate object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '_id',
+      serializers.serialize(object.G_id, specifiedType: const FullType(String)),
+      'username',
+      serializers.serialize(object.username,
+          specifiedType: const FullType(String)),
+      'email',
+      serializers.serialize(object.email,
+          specifiedType: const FullType(String)),
+      'role',
+      serializers.serialize(object.role,
+          specifiedType: const FullType(_i2.GRoleEnum)),
+      'status',
+      serializers.serialize(object.status, specifiedType: const FullType(bool)),
+      'password',
+      serializers.serialize(object.password,
+          specifiedType: const FullType(String)),
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.voters;
+    if (value != null) {
+      result
+        ..add('voters')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList,
+                const [const FullType(GvoteData_vote_candidate_voters)])));
+    }
+    return result;
+  }
+
+  @override
+  GvoteData_vote_candidate deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GvoteData_vote_candidateBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '_id':
+          result.G_id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'username':
+          result.username = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'email':
+          result.email = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'role':
+          result.role = serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GRoleEnum)) as _i2.GRoleEnum;
+          break;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'password':
+          result.password = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'voters':
+          result.voters.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(GvoteData_vote_candidate_voters)
+              ]))! as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GvoteData_vote_candidate_votersSerializer
+    implements StructuredSerializer<GvoteData_vote_candidate_voters> {
+  @override
+  final Iterable<Type> types = const [
+    GvoteData_vote_candidate_voters,
+    _$GvoteData_vote_candidate_voters
+  ];
+  @override
+  final String wireName = 'GvoteData_vote_candidate_voters';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GvoteData_vote_candidate_voters object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '_id',
+      serializers.serialize(object.G_id, specifiedType: const FullType(String)),
+      'username',
+      serializers.serialize(object.username,
+          specifiedType: const FullType(String)),
+      'email',
+      serializers.serialize(object.email,
+          specifiedType: const FullType(String)),
+      'role',
+      serializers.serialize(object.role,
+          specifiedType: const FullType(_i2.GRoleEnum)),
+      'status',
+      serializers.serialize(object.status, specifiedType: const FullType(bool)),
+      'password',
+      serializers.serialize(object.password,
+          specifiedType: const FullType(String)),
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GvoteData_vote_candidate_voters deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GvoteData_vote_candidate_votersBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '_id':
+          result.G_id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'username':
+          result.username = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'email':
+          result.email = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'role':
+          result.role = serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GRoleEnum)) as _i2.GRoleEnum;
+          break;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'password':
+          result.password = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GregisterDataSerializer implements StructuredSerializer<GregisterData> {
   @override
   final Iterable<Type> types = const [GregisterData, _$GregisterData];
@@ -1159,14 +1562,15 @@ class _$GloginData_loginSerializer
   }
 }
 
-class _$GvoteDataSerializer implements StructuredSerializer<GvoteData> {
+class _$GdeletePollDataSerializer
+    implements StructuredSerializer<GdeletePollData> {
   @override
-  final Iterable<Type> types = const [GvoteData, _$GvoteData];
+  final Iterable<Type> types = const [GdeletePollData, _$GdeletePollData];
   @override
-  final String wireName = 'GvoteData';
+  final String wireName = 'GdeletePollData';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GvoteData object,
+  Iterable<Object?> serialize(Serializers serializers, GdeletePollData object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       '__typename',
@@ -1174,10 +1578,10 @@ class _$GvoteDataSerializer implements StructuredSerializer<GvoteData> {
           specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.vote;
+    value = object.deletePoll;
     if (value != null) {
       result
-        ..add('vote')
+        ..add('deletePoll')
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
@@ -1185,9 +1589,10 @@ class _$GvoteDataSerializer implements StructuredSerializer<GvoteData> {
   }
 
   @override
-  GvoteData deserialize(Serializers serializers, Iterable<Object?> serialized,
+  GdeletePollData deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GvoteDataBuilder();
+    final result = new GdeletePollDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -1199,9 +1604,150 @@ class _$GvoteDataSerializer implements StructuredSerializer<GvoteData> {
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'vote':
-          result.vote = serializers.deserialize(value,
+        case 'deletePoll':
+          result.deletePoll = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool?;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GcreatePollDataSerializer
+    implements StructuredSerializer<GcreatePollData> {
+  @override
+  final Iterable<Type> types = const [GcreatePollData, _$GcreatePollData];
+  @override
+  final String wireName = 'GcreatePollData';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GcreatePollData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+    Object? value;
+    value = object.createPoll;
+    if (value != null) {
+      result
+        ..add('createPoll')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GcreatePollData_createPoll)));
+    }
+    return result;
+  }
+
+  @override
+  GcreatePollData deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GcreatePollDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'createPoll':
+          result.createPoll.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(GcreatePollData_createPoll))!
+              as GcreatePollData_createPoll);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GcreatePollData_createPollSerializer
+    implements StructuredSerializer<GcreatePollData_createPoll> {
+  @override
+  final Iterable<Type> types = const [
+    GcreatePollData_createPoll,
+    _$GcreatePollData_createPoll
+  ];
+  @override
+  final String wireName = 'GcreatePollData_createPoll';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GcreatePollData_createPoll object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '_id',
+      serializers.serialize(object.G_id, specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
+      'duration',
+      serializers.serialize(object.duration,
+          specifiedType: const FullType(int)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(_i2.GDate)),
+      'updatedAt',
+      serializers.serialize(object.updatedAt,
+          specifiedType: const FullType(_i2.GDate)),
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GcreatePollData_createPoll deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GcreatePollData_createPollBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '_id':
+          result.G_id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'duration':
+          result.duration = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'createdAt':
+          result.createdAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GDate))! as _i2.GDate);
+          break;
+        case 'updatedAt':
+          result.updatedAt.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.GDate))! as _i2.GDate);
+          break;
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -2786,6 +3332,806 @@ class GpollVotersDataBuilder
   }
 }
 
+class _$GaddCandidateData extends GaddCandidateData {
+  @override
+  final String G__typename;
+  @override
+  final bool? addCandidate;
+
+  factory _$GaddCandidateData(
+          [void Function(GaddCandidateDataBuilder)? updates]) =>
+      (new GaddCandidateDataBuilder()..update(updates)).build();
+
+  _$GaddCandidateData._({required this.G__typename, this.addCandidate})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GaddCandidateData', 'G__typename');
+  }
+
+  @override
+  GaddCandidateData rebuild(void Function(GaddCandidateDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GaddCandidateDataBuilder toBuilder() =>
+      new GaddCandidateDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GaddCandidateData &&
+        G__typename == other.G__typename &&
+        addCandidate == other.addCandidate;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, G__typename.hashCode), addCandidate.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GaddCandidateData')
+          ..add('G__typename', G__typename)
+          ..add('addCandidate', addCandidate))
+        .toString();
+  }
+}
+
+class GaddCandidateDataBuilder
+    implements Builder<GaddCandidateData, GaddCandidateDataBuilder> {
+  _$GaddCandidateData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  bool? _addCandidate;
+  bool? get addCandidate => _$this._addCandidate;
+  set addCandidate(bool? addCandidate) => _$this._addCandidate = addCandidate;
+
+  GaddCandidateDataBuilder() {
+    GaddCandidateData._initializeBuilder(this);
+  }
+
+  GaddCandidateDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _addCandidate = $v.addCandidate;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GaddCandidateData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GaddCandidateData;
+  }
+
+  @override
+  void update(void Function(GaddCandidateDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GaddCandidateData build() {
+    final _$result = _$v ??
+        new _$GaddCandidateData._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GaddCandidateData', 'G__typename'),
+            addCandidate: addCandidate);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GvoteData extends GvoteData {
+  @override
+  final String G__typename;
+  @override
+  final GvoteData_vote? vote;
+
+  factory _$GvoteData([void Function(GvoteDataBuilder)? updates]) =>
+      (new GvoteDataBuilder()..update(updates)).build();
+
+  _$GvoteData._({required this.G__typename, this.vote}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GvoteData', 'G__typename');
+  }
+
+  @override
+  GvoteData rebuild(void Function(GvoteDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GvoteDataBuilder toBuilder() => new GvoteDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GvoteData &&
+        G__typename == other.G__typename &&
+        vote == other.vote;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, G__typename.hashCode), vote.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GvoteData')
+          ..add('G__typename', G__typename)
+          ..add('vote', vote))
+        .toString();
+  }
+}
+
+class GvoteDataBuilder implements Builder<GvoteData, GvoteDataBuilder> {
+  _$GvoteData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GvoteData_voteBuilder? _vote;
+  GvoteData_voteBuilder get vote =>
+      _$this._vote ??= new GvoteData_voteBuilder();
+  set vote(GvoteData_voteBuilder? vote) => _$this._vote = vote;
+
+  GvoteDataBuilder() {
+    GvoteData._initializeBuilder(this);
+  }
+
+  GvoteDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _vote = $v.vote?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GvoteData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GvoteData;
+  }
+
+  @override
+  void update(void Function(GvoteDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GvoteData build() {
+    _$GvoteData _$result;
+    try {
+      _$result = _$v ??
+          new _$GvoteData._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GvoteData', 'G__typename'),
+              vote: _vote?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'vote';
+        _vote?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GvoteData', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GvoteData_vote extends GvoteData_vote {
+  @override
+  final String G__typename;
+  @override
+  final String G_id;
+  @override
+  final String title;
+  @override
+  final String description;
+  @override
+  final int duration;
+  @override
+  final _i2.GDate createdAt;
+  @override
+  final _i2.GDate updatedAt;
+  @override
+  final BuiltList<GvoteData_vote_candidate>? candidate;
+
+  factory _$GvoteData_vote([void Function(GvoteData_voteBuilder)? updates]) =>
+      (new GvoteData_voteBuilder()..update(updates)).build();
+
+  _$GvoteData_vote._(
+      {required this.G__typename,
+      required this.G_id,
+      required this.title,
+      required this.description,
+      required this.duration,
+      required this.createdAt,
+      required this.updatedAt,
+      this.candidate})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GvoteData_vote', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(G_id, 'GvoteData_vote', 'G_id');
+    BuiltValueNullFieldError.checkNotNull(title, 'GvoteData_vote', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        description, 'GvoteData_vote', 'description');
+    BuiltValueNullFieldError.checkNotNull(
+        duration, 'GvoteData_vote', 'duration');
+    BuiltValueNullFieldError.checkNotNull(
+        createdAt, 'GvoteData_vote', 'createdAt');
+    BuiltValueNullFieldError.checkNotNull(
+        updatedAt, 'GvoteData_vote', 'updatedAt');
+  }
+
+  @override
+  GvoteData_vote rebuild(void Function(GvoteData_voteBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GvoteData_voteBuilder toBuilder() =>
+      new GvoteData_voteBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GvoteData_vote &&
+        G__typename == other.G__typename &&
+        G_id == other.G_id &&
+        title == other.title &&
+        description == other.description &&
+        duration == other.duration &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt &&
+        candidate == other.candidate;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc(
+                        $jc($jc($jc(0, G__typename.hashCode), G_id.hashCode),
+                            title.hashCode),
+                        description.hashCode),
+                    duration.hashCode),
+                createdAt.hashCode),
+            updatedAt.hashCode),
+        candidate.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GvoteData_vote')
+          ..add('G__typename', G__typename)
+          ..add('G_id', G_id)
+          ..add('title', title)
+          ..add('description', description)
+          ..add('duration', duration)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt)
+          ..add('candidate', candidate))
+        .toString();
+  }
+}
+
+class GvoteData_voteBuilder
+    implements Builder<GvoteData_vote, GvoteData_voteBuilder> {
+  _$GvoteData_vote? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _G_id;
+  String? get G_id => _$this._G_id;
+  set G_id(String? G_id) => _$this._G_id = G_id;
+
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  int? _duration;
+  int? get duration => _$this._duration;
+  set duration(int? duration) => _$this._duration = duration;
+
+  _i2.GDateBuilder? _createdAt;
+  _i2.GDateBuilder get createdAt =>
+      _$this._createdAt ??= new _i2.GDateBuilder();
+  set createdAt(_i2.GDateBuilder? createdAt) => _$this._createdAt = createdAt;
+
+  _i2.GDateBuilder? _updatedAt;
+  _i2.GDateBuilder get updatedAt =>
+      _$this._updatedAt ??= new _i2.GDateBuilder();
+  set updatedAt(_i2.GDateBuilder? updatedAt) => _$this._updatedAt = updatedAt;
+
+  ListBuilder<GvoteData_vote_candidate>? _candidate;
+  ListBuilder<GvoteData_vote_candidate> get candidate =>
+      _$this._candidate ??= new ListBuilder<GvoteData_vote_candidate>();
+  set candidate(ListBuilder<GvoteData_vote_candidate>? candidate) =>
+      _$this._candidate = candidate;
+
+  GvoteData_voteBuilder() {
+    GvoteData_vote._initializeBuilder(this);
+  }
+
+  GvoteData_voteBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _G_id = $v.G_id;
+      _title = $v.title;
+      _description = $v.description;
+      _duration = $v.duration;
+      _createdAt = $v.createdAt.toBuilder();
+      _updatedAt = $v.updatedAt.toBuilder();
+      _candidate = $v.candidate?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GvoteData_vote other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GvoteData_vote;
+  }
+
+  @override
+  void update(void Function(GvoteData_voteBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GvoteData_vote build() {
+    _$GvoteData_vote _$result;
+    try {
+      _$result = _$v ??
+          new _$GvoteData_vote._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GvoteData_vote', 'G__typename'),
+              G_id: BuiltValueNullFieldError.checkNotNull(
+                  G_id, 'GvoteData_vote', 'G_id'),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, 'GvoteData_vote', 'title'),
+              description: BuiltValueNullFieldError.checkNotNull(
+                  description, 'GvoteData_vote', 'description'),
+              duration: BuiltValueNullFieldError.checkNotNull(
+                  duration, 'GvoteData_vote', 'duration'),
+              createdAt: createdAt.build(),
+              updatedAt: updatedAt.build(),
+              candidate: _candidate?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'createdAt';
+        createdAt.build();
+        _$failedField = 'updatedAt';
+        updatedAt.build();
+        _$failedField = 'candidate';
+        _candidate?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GvoteData_vote', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GvoteData_vote_candidate extends GvoteData_vote_candidate {
+  @override
+  final String G_id;
+  @override
+  final String username;
+  @override
+  final String email;
+  @override
+  final _i2.GRoleEnum role;
+  @override
+  final bool status;
+  @override
+  final String password;
+  @override
+  final String G__typename;
+  @override
+  final BuiltList<GvoteData_vote_candidate_voters>? voters;
+
+  factory _$GvoteData_vote_candidate(
+          [void Function(GvoteData_vote_candidateBuilder)? updates]) =>
+      (new GvoteData_vote_candidateBuilder()..update(updates)).build();
+
+  _$GvoteData_vote_candidate._(
+      {required this.G_id,
+      required this.username,
+      required this.email,
+      required this.role,
+      required this.status,
+      required this.password,
+      required this.G__typename,
+      this.voters})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G_id, 'GvoteData_vote_candidate', 'G_id');
+    BuiltValueNullFieldError.checkNotNull(
+        username, 'GvoteData_vote_candidate', 'username');
+    BuiltValueNullFieldError.checkNotNull(
+        email, 'GvoteData_vote_candidate', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        role, 'GvoteData_vote_candidate', 'role');
+    BuiltValueNullFieldError.checkNotNull(
+        status, 'GvoteData_vote_candidate', 'status');
+    BuiltValueNullFieldError.checkNotNull(
+        password, 'GvoteData_vote_candidate', 'password');
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GvoteData_vote_candidate', 'G__typename');
+  }
+
+  @override
+  GvoteData_vote_candidate rebuild(
+          void Function(GvoteData_vote_candidateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GvoteData_vote_candidateBuilder toBuilder() =>
+      new GvoteData_vote_candidateBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GvoteData_vote_candidate &&
+        G_id == other.G_id &&
+        username == other.username &&
+        email == other.email &&
+        role == other.role &&
+        status == other.status &&
+        password == other.password &&
+        G__typename == other.G__typename &&
+        voters == other.voters;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc(
+                        $jc($jc($jc(0, G_id.hashCode), username.hashCode),
+                            email.hashCode),
+                        role.hashCode),
+                    status.hashCode),
+                password.hashCode),
+            G__typename.hashCode),
+        voters.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GvoteData_vote_candidate')
+          ..add('G_id', G_id)
+          ..add('username', username)
+          ..add('email', email)
+          ..add('role', role)
+          ..add('status', status)
+          ..add('password', password)
+          ..add('G__typename', G__typename)
+          ..add('voters', voters))
+        .toString();
+  }
+}
+
+class GvoteData_vote_candidateBuilder
+    implements
+        Builder<GvoteData_vote_candidate, GvoteData_vote_candidateBuilder> {
+  _$GvoteData_vote_candidate? _$v;
+
+  String? _G_id;
+  String? get G_id => _$this._G_id;
+  set G_id(String? G_id) => _$this._G_id = G_id;
+
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  _i2.GRoleEnum? _role;
+  _i2.GRoleEnum? get role => _$this._role;
+  set role(_i2.GRoleEnum? role) => _$this._role = role;
+
+  bool? _status;
+  bool? get status => _$this._status;
+  set status(bool? status) => _$this._status = status;
+
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  ListBuilder<GvoteData_vote_candidate_voters>? _voters;
+  ListBuilder<GvoteData_vote_candidate_voters> get voters =>
+      _$this._voters ??= new ListBuilder<GvoteData_vote_candidate_voters>();
+  set voters(ListBuilder<GvoteData_vote_candidate_voters>? voters) =>
+      _$this._voters = voters;
+
+  GvoteData_vote_candidateBuilder() {
+    GvoteData_vote_candidate._initializeBuilder(this);
+  }
+
+  GvoteData_vote_candidateBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G_id = $v.G_id;
+      _username = $v.username;
+      _email = $v.email;
+      _role = $v.role;
+      _status = $v.status;
+      _password = $v.password;
+      _G__typename = $v.G__typename;
+      _voters = $v.voters?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GvoteData_vote_candidate other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GvoteData_vote_candidate;
+  }
+
+  @override
+  void update(void Function(GvoteData_vote_candidateBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GvoteData_vote_candidate build() {
+    _$GvoteData_vote_candidate _$result;
+    try {
+      _$result = _$v ??
+          new _$GvoteData_vote_candidate._(
+              G_id: BuiltValueNullFieldError.checkNotNull(
+                  G_id, 'GvoteData_vote_candidate', 'G_id'),
+              username: BuiltValueNullFieldError.checkNotNull(
+                  username, 'GvoteData_vote_candidate', 'username'),
+              email: BuiltValueNullFieldError.checkNotNull(
+                  email, 'GvoteData_vote_candidate', 'email'),
+              role: BuiltValueNullFieldError.checkNotNull(
+                  role, 'GvoteData_vote_candidate', 'role'),
+              status: BuiltValueNullFieldError.checkNotNull(
+                  status, 'GvoteData_vote_candidate', 'status'),
+              password: BuiltValueNullFieldError.checkNotNull(
+                  password, 'GvoteData_vote_candidate', 'password'),
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GvoteData_vote_candidate', 'G__typename'),
+              voters: _voters?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'voters';
+        _voters?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GvoteData_vote_candidate', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GvoteData_vote_candidate_voters
+    extends GvoteData_vote_candidate_voters {
+  @override
+  final String G_id;
+  @override
+  final String username;
+  @override
+  final String email;
+  @override
+  final _i2.GRoleEnum role;
+  @override
+  final bool status;
+  @override
+  final String password;
+  @override
+  final String G__typename;
+
+  factory _$GvoteData_vote_candidate_voters(
+          [void Function(GvoteData_vote_candidate_votersBuilder)? updates]) =>
+      (new GvoteData_vote_candidate_votersBuilder()..update(updates)).build();
+
+  _$GvoteData_vote_candidate_voters._(
+      {required this.G_id,
+      required this.username,
+      required this.email,
+      required this.role,
+      required this.status,
+      required this.password,
+      required this.G__typename})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G_id, 'GvoteData_vote_candidate_voters', 'G_id');
+    BuiltValueNullFieldError.checkNotNull(
+        username, 'GvoteData_vote_candidate_voters', 'username');
+    BuiltValueNullFieldError.checkNotNull(
+        email, 'GvoteData_vote_candidate_voters', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        role, 'GvoteData_vote_candidate_voters', 'role');
+    BuiltValueNullFieldError.checkNotNull(
+        status, 'GvoteData_vote_candidate_voters', 'status');
+    BuiltValueNullFieldError.checkNotNull(
+        password, 'GvoteData_vote_candidate_voters', 'password');
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GvoteData_vote_candidate_voters', 'G__typename');
+  }
+
+  @override
+  GvoteData_vote_candidate_voters rebuild(
+          void Function(GvoteData_vote_candidate_votersBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GvoteData_vote_candidate_votersBuilder toBuilder() =>
+      new GvoteData_vote_candidate_votersBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GvoteData_vote_candidate_voters &&
+        G_id == other.G_id &&
+        username == other.username &&
+        email == other.email &&
+        role == other.role &&
+        status == other.status &&
+        password == other.password &&
+        G__typename == other.G__typename;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, G_id.hashCode), username.hashCode),
+                        email.hashCode),
+                    role.hashCode),
+                status.hashCode),
+            password.hashCode),
+        G__typename.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GvoteData_vote_candidate_voters')
+          ..add('G_id', G_id)
+          ..add('username', username)
+          ..add('email', email)
+          ..add('role', role)
+          ..add('status', status)
+          ..add('password', password)
+          ..add('G__typename', G__typename))
+        .toString();
+  }
+}
+
+class GvoteData_vote_candidate_votersBuilder
+    implements
+        Builder<GvoteData_vote_candidate_voters,
+            GvoteData_vote_candidate_votersBuilder> {
+  _$GvoteData_vote_candidate_voters? _$v;
+
+  String? _G_id;
+  String? get G_id => _$this._G_id;
+  set G_id(String? G_id) => _$this._G_id = G_id;
+
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  _i2.GRoleEnum? _role;
+  _i2.GRoleEnum? get role => _$this._role;
+  set role(_i2.GRoleEnum? role) => _$this._role = role;
+
+  bool? _status;
+  bool? get status => _$this._status;
+  set status(bool? status) => _$this._status = status;
+
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GvoteData_vote_candidate_votersBuilder() {
+    GvoteData_vote_candidate_voters._initializeBuilder(this);
+  }
+
+  GvoteData_vote_candidate_votersBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G_id = $v.G_id;
+      _username = $v.username;
+      _email = $v.email;
+      _role = $v.role;
+      _status = $v.status;
+      _password = $v.password;
+      _G__typename = $v.G__typename;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GvoteData_vote_candidate_voters other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GvoteData_vote_candidate_voters;
+  }
+
+  @override
+  void update(void Function(GvoteData_vote_candidate_votersBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GvoteData_vote_candidate_voters build() {
+    final _$result = _$v ??
+        new _$GvoteData_vote_candidate_voters._(
+            G_id: BuiltValueNullFieldError.checkNotNull(
+                G_id, 'GvoteData_vote_candidate_voters', 'G_id'),
+            username: BuiltValueNullFieldError.checkNotNull(
+                username, 'GvoteData_vote_candidate_voters', 'username'),
+            email: BuiltValueNullFieldError.checkNotNull(
+                email, 'GvoteData_vote_candidate_voters', 'email'),
+            role: BuiltValueNullFieldError.checkNotNull(
+                role, 'GvoteData_vote_candidate_voters', 'role'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, 'GvoteData_vote_candidate_voters', 'status'),
+            password: BuiltValueNullFieldError.checkNotNull(
+                password, 'GvoteData_vote_candidate_voters', 'password'),
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, 'GvoteData_vote_candidate_voters', 'G__typename'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GregisterData extends GregisterData {
   @override
   final String G__typename;
@@ -3503,92 +4849,400 @@ class GloginData_loginBuilder
   }
 }
 
-class _$GvoteData extends GvoteData {
+class _$GdeletePollData extends GdeletePollData {
   @override
   final String G__typename;
   @override
-  final bool? vote;
+  final bool? deletePoll;
 
-  factory _$GvoteData([void Function(GvoteDataBuilder)? updates]) =>
-      (new GvoteDataBuilder()..update(updates)).build();
+  factory _$GdeletePollData([void Function(GdeletePollDataBuilder)? updates]) =>
+      (new GdeletePollDataBuilder()..update(updates)).build();
 
-  _$GvoteData._({required this.G__typename, this.vote}) : super._() {
+  _$GdeletePollData._({required this.G__typename, this.deletePoll})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        G__typename, 'GvoteData', 'G__typename');
+        G__typename, 'GdeletePollData', 'G__typename');
   }
 
   @override
-  GvoteData rebuild(void Function(GvoteDataBuilder) updates) =>
+  GdeletePollData rebuild(void Function(GdeletePollDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GvoteDataBuilder toBuilder() => new GvoteDataBuilder()..replace(this);
+  GdeletePollDataBuilder toBuilder() =>
+      new GdeletePollDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GvoteData &&
+    return other is GdeletePollData &&
         G__typename == other.G__typename &&
-        vote == other.vote;
+        deletePoll == other.deletePoll;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), vote.hashCode));
+    return $jf($jc($jc(0, G__typename.hashCode), deletePoll.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GvoteData')
+    return (newBuiltValueToStringHelper('GdeletePollData')
           ..add('G__typename', G__typename)
-          ..add('vote', vote))
+          ..add('deletePoll', deletePoll))
         .toString();
   }
 }
 
-class GvoteDataBuilder implements Builder<GvoteData, GvoteDataBuilder> {
-  _$GvoteData? _$v;
+class GdeletePollDataBuilder
+    implements Builder<GdeletePollData, GdeletePollDataBuilder> {
+  _$GdeletePollData? _$v;
 
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
 
-  bool? _vote;
-  bool? get vote => _$this._vote;
-  set vote(bool? vote) => _$this._vote = vote;
+  bool? _deletePoll;
+  bool? get deletePoll => _$this._deletePoll;
+  set deletePoll(bool? deletePoll) => _$this._deletePoll = deletePoll;
 
-  GvoteDataBuilder() {
-    GvoteData._initializeBuilder(this);
+  GdeletePollDataBuilder() {
+    GdeletePollData._initializeBuilder(this);
   }
 
-  GvoteDataBuilder get _$this {
+  GdeletePollDataBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _vote = $v.vote;
+      _deletePoll = $v.deletePoll;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(GvoteData other) {
+  void replace(GdeletePollData other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GvoteData;
+    _$v = other as _$GdeletePollData;
   }
 
   @override
-  void update(void Function(GvoteDataBuilder)? updates) {
+  void update(void Function(GdeletePollDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$GvoteData build() {
+  _$GdeletePollData build() {
     final _$result = _$v ??
-        new _$GvoteData._(
+        new _$GdeletePollData._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GvoteData', 'G__typename'),
-            vote: vote);
+                G__typename, 'GdeletePollData', 'G__typename'),
+            deletePoll: deletePoll);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GcreatePollData extends GcreatePollData {
+  @override
+  final String G__typename;
+  @override
+  final GcreatePollData_createPoll? createPoll;
+
+  factory _$GcreatePollData([void Function(GcreatePollDataBuilder)? updates]) =>
+      (new GcreatePollDataBuilder()..update(updates)).build();
+
+  _$GcreatePollData._({required this.G__typename, this.createPoll})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GcreatePollData', 'G__typename');
+  }
+
+  @override
+  GcreatePollData rebuild(void Function(GcreatePollDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GcreatePollDataBuilder toBuilder() =>
+      new GcreatePollDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GcreatePollData &&
+        G__typename == other.G__typename &&
+        createPoll == other.createPoll;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, G__typename.hashCode), createPoll.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GcreatePollData')
+          ..add('G__typename', G__typename)
+          ..add('createPoll', createPoll))
+        .toString();
+  }
+}
+
+class GcreatePollDataBuilder
+    implements Builder<GcreatePollData, GcreatePollDataBuilder> {
+  _$GcreatePollData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GcreatePollData_createPollBuilder? _createPoll;
+  GcreatePollData_createPollBuilder get createPoll =>
+      _$this._createPoll ??= new GcreatePollData_createPollBuilder();
+  set createPoll(GcreatePollData_createPollBuilder? createPoll) =>
+      _$this._createPoll = createPoll;
+
+  GcreatePollDataBuilder() {
+    GcreatePollData._initializeBuilder(this);
+  }
+
+  GcreatePollDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _createPoll = $v.createPoll?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GcreatePollData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GcreatePollData;
+  }
+
+  @override
+  void update(void Function(GcreatePollDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GcreatePollData build() {
+    _$GcreatePollData _$result;
+    try {
+      _$result = _$v ??
+          new _$GcreatePollData._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GcreatePollData', 'G__typename'),
+              createPoll: _createPoll?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'createPoll';
+        _createPoll?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GcreatePollData', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GcreatePollData_createPoll extends GcreatePollData_createPoll {
+  @override
+  final String G_id;
+  @override
+  final String title;
+  @override
+  final int duration;
+  @override
+  final String description;
+  @override
+  final _i2.GDate createdAt;
+  @override
+  final _i2.GDate updatedAt;
+  @override
+  final String G__typename;
+
+  factory _$GcreatePollData_createPoll(
+          [void Function(GcreatePollData_createPollBuilder)? updates]) =>
+      (new GcreatePollData_createPollBuilder()..update(updates)).build();
+
+  _$GcreatePollData_createPoll._(
+      {required this.G_id,
+      required this.title,
+      required this.duration,
+      required this.description,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.G__typename})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G_id, 'GcreatePollData_createPoll', 'G_id');
+    BuiltValueNullFieldError.checkNotNull(
+        title, 'GcreatePollData_createPoll', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        duration, 'GcreatePollData_createPoll', 'duration');
+    BuiltValueNullFieldError.checkNotNull(
+        description, 'GcreatePollData_createPoll', 'description');
+    BuiltValueNullFieldError.checkNotNull(
+        createdAt, 'GcreatePollData_createPoll', 'createdAt');
+    BuiltValueNullFieldError.checkNotNull(
+        updatedAt, 'GcreatePollData_createPoll', 'updatedAt');
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GcreatePollData_createPoll', 'G__typename');
+  }
+
+  @override
+  GcreatePollData_createPoll rebuild(
+          void Function(GcreatePollData_createPollBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GcreatePollData_createPollBuilder toBuilder() =>
+      new GcreatePollData_createPollBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GcreatePollData_createPoll &&
+        G_id == other.G_id &&
+        title == other.title &&
+        duration == other.duration &&
+        description == other.description &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt &&
+        G__typename == other.G__typename;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, G_id.hashCode), title.hashCode),
+                        duration.hashCode),
+                    description.hashCode),
+                createdAt.hashCode),
+            updatedAt.hashCode),
+        G__typename.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GcreatePollData_createPoll')
+          ..add('G_id', G_id)
+          ..add('title', title)
+          ..add('duration', duration)
+          ..add('description', description)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt)
+          ..add('G__typename', G__typename))
+        .toString();
+  }
+}
+
+class GcreatePollData_createPollBuilder
+    implements
+        Builder<GcreatePollData_createPoll, GcreatePollData_createPollBuilder> {
+  _$GcreatePollData_createPoll? _$v;
+
+  String? _G_id;
+  String? get G_id => _$this._G_id;
+  set G_id(String? G_id) => _$this._G_id = G_id;
+
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
+
+  int? _duration;
+  int? get duration => _$this._duration;
+  set duration(int? duration) => _$this._duration = duration;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  _i2.GDateBuilder? _createdAt;
+  _i2.GDateBuilder get createdAt =>
+      _$this._createdAt ??= new _i2.GDateBuilder();
+  set createdAt(_i2.GDateBuilder? createdAt) => _$this._createdAt = createdAt;
+
+  _i2.GDateBuilder? _updatedAt;
+  _i2.GDateBuilder get updatedAt =>
+      _$this._updatedAt ??= new _i2.GDateBuilder();
+  set updatedAt(_i2.GDateBuilder? updatedAt) => _$this._updatedAt = updatedAt;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  GcreatePollData_createPollBuilder() {
+    GcreatePollData_createPoll._initializeBuilder(this);
+  }
+
+  GcreatePollData_createPollBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G_id = $v.G_id;
+      _title = $v.title;
+      _duration = $v.duration;
+      _description = $v.description;
+      _createdAt = $v.createdAt.toBuilder();
+      _updatedAt = $v.updatedAt.toBuilder();
+      _G__typename = $v.G__typename;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GcreatePollData_createPoll other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GcreatePollData_createPoll;
+  }
+
+  @override
+  void update(void Function(GcreatePollData_createPollBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GcreatePollData_createPoll build() {
+    _$GcreatePollData_createPoll _$result;
+    try {
+      _$result = _$v ??
+          new _$GcreatePollData_createPoll._(
+              G_id: BuiltValueNullFieldError.checkNotNull(
+                  G_id, 'GcreatePollData_createPoll', 'G_id'),
+              title: BuiltValueNullFieldError.checkNotNull(
+                  title, 'GcreatePollData_createPoll', 'title'),
+              duration: BuiltValueNullFieldError.checkNotNull(
+                  duration, 'GcreatePollData_createPoll', 'duration'),
+              description: BuiltValueNullFieldError.checkNotNull(
+                  description, 'GcreatePollData_createPoll', 'description'),
+              createdAt: createdAt.build(),
+              updatedAt: updatedAt.build(),
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GcreatePollData_createPoll', 'G__typename'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'createdAt';
+        createdAt.build();
+        _$failedField = 'updatedAt';
+        updatedAt.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GcreatePollData_createPoll', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

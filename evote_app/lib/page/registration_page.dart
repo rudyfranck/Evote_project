@@ -1,6 +1,6 @@
-import 'package:evote_app/page/widgets/registration_form_values.dart';
+import 'package:evote_app/page/widgets/registration/registration_form_values.dart';
 import 'package:evote_app/page/widgets/header_widget.dart';
-import 'package:evote_app/page/widgets/registration_form.dart';
+import 'package:evote_app/page/widgets/registration/registration_form.dart';
 import 'package:evote_client/graphql/poll.req.gql.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +34,7 @@ class RegistrationPage extends  StatelessWidget{
           Navigator.of(context).pop();
         } else {
 
-          for (var index = 0; index < errors!.length; index++) {
+          for (var index = 0; index < errors!.length ; index++) {
                 ScaffoldMessenger.of(context).showSnackBar( SnackBar(
                   backgroundColor: Colors.red,
                   content: Text(errors[index].message,

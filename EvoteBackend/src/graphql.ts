@@ -15,6 +15,7 @@ export class CreatePollInput {
     title: string;
     description: string;
     duration: number;
+    candidate: [];
 }
 
 export class voteInput{
@@ -56,7 +57,7 @@ export abstract class IMutation {
 
     abstract updatePoll(_id: string, input: UpdatePollInput): boolean | Promise<boolean>;
 
-    abstract deletePoll(_id: string): boolean | Promise<boolean>;
+    abstract deletePoll(_id: string): boolean | Poll | Promise<Poll>;
 
     abstract deletePolls(): boolean | Promise<boolean>;
 
@@ -74,9 +75,7 @@ export abstract class IMutation {
 
     abstract addCandidateInPoll(user_id: string, poll_id: string): boolean | Promise<boolean>;
 
-    abstract vote(user_id: string, poll_id: string, candidate_id: string ): boolean | Promise<boolean>;
-
-    abstract pollVoters(_id: string) : number | Promise<number>;
+   
 
   
 
@@ -84,8 +83,6 @@ export abstract class IMutation {
 }
 
 export abstract class IQuery {
-    abstract dishes(): string | Promise<string>;
-
     abstract polls(): Poll[] | Promise<Poll[]>;
 
     abstract poll(_id: string): Poll | Promise<Poll>;
@@ -97,6 +94,10 @@ export abstract class IQuery {
     abstract users(offset: number, limit: number): User[] | Promise<User[]>;
 
     abstract user(_id: string): User | Promise<User>;
+
+    abstract vote(user_id: string, poll_id: string, candidate_id: string ): boolean | Promise<boolean>;
+
+    abstract pollVoters(_id: string) : number | Promise<number>;
      
 }
 

@@ -1,5 +1,5 @@
-import 'package:evote_app/page/widgets/login_form.dart';
-import 'package:evote_app/page/widgets/login_form_values.dart';
+import 'package:evote_app/page/widgets/login/login_form.dart';
+import 'package:evote_app/page/widgets/login/login_form_values.dart';
 import 'package:evote_client/polls_client.dart';
 import 'package:ferry/ferry.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,11 +25,9 @@ class LoginPage extends StatelessWidget{
      client.request(login).listen((response)  async {
        final data = response.data?.login?.token;
        final errors = response.graphqlErrors;
-
        if(data != null){
             //set the token in the storage
            storage.setItem('Token', data);
-
          ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
            backgroundColor: Colors.green,
            content: Text("you login  successfully",
@@ -40,6 +38,7 @@ class LoginPage extends StatelessWidget{
          ));
          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
        }else{
+         var newError = errors?.length ?? 0;
          for (var index = 0; index < errors!.length; index++) {
            ScaffoldMessenger.of(context).showSnackBar( SnackBar(
              backgroundColor: Colors.red,

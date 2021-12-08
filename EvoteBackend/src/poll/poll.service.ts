@@ -28,9 +28,8 @@ export class PollService {
 
 	
 
-	async create(input: CreatePollInput): Promise<Poll> {
+	async create(input: CreatePollInput,): Promise<Poll> {
 		const { title, description,duration, } = input
-
 		const poll = new Poll()
 		poll.title = title;
 		poll.description = description;
@@ -53,9 +52,9 @@ export class PollService {
 		return (await this.pollRepository.updateOne({_id:_id}, {$set:{input}})) ? true : false
 	}
 
-	async delete(_id: string): Promise<boolean> {
+	async delete(_id: string): Promise<Poll>{
 		const poll = await this.pollRepository.findOne({ _id })
-		return (await this.pollRepository.remove(poll)) ? true : false
+		return (await this.pollRepository.remove(poll)) 
 	}
 
 	async deleteAll(): Promise<boolean> {
@@ -87,9 +86,6 @@ export class PollService {
         const poll = await this.findById(poll_id);
 
 		const isAlreadyCandidate = await this.checkIfthisGuyISAlreadyACandidate(poll, candidate)
-		// console.log("all poll Candidates: " , this.candidateOfPoll(poll));
-		// console.log("is her a candidate?? " , isAlreadyCandidate)
-		
 		if(isAlreadyCandidate){
 			throw new Error(candidate.username + " is already a CANDIDATE in " + poll.title);
 		}else{
@@ -119,10 +115,6 @@ export class PollService {
 
 		return hasAlreadyVoted;
 	}
-
-
-
-
 	votersOfPoll(poll: Poll){
 		var pollVoters = []
 		for(var i=0; i<poll.candidate.length; i++){

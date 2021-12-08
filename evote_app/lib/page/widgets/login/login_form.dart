@@ -1,10 +1,10 @@
 import 'package:evote_app/common/theme_helper.dart';
-import 'package:evote_app/page/widgets/login_form_values.dart';
+import 'package:evote_app/page/widgets/login/login_form_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../forgot_password_page.dart';
-import '../registration_page.dart';
+import '../../forgot_password_page.dart';
+import '../../registration_page.dart';
 
 
 class LoginForm extends StatefulWidget {

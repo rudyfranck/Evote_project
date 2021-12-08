@@ -1,14 +1,11 @@
-import 'package:evote_app/page/widgets/stop_time.dart';
-import 'package:evote_client/graphql/schema.ast.gql.dart';
 import 'package:evote_client/polls_client.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'chart.dart';
-import 'chart_data/pie_chart_data.dart';
-import 'nor_candidate_in_list.dart';
+import '../chart/pie_chart.dart';
+import '../candidate/nor_candidate_in_list.dart';
 
 class PollReport extends StatelessWidget{
   final GFetchPollData_polls poll;
@@ -72,7 +69,7 @@ class PollReport extends StatelessWidget{
           if(pollVoters == 0){
             return Column(
               children: [
-                PieDefault(poll: poll, pollVoters: 1)
+                PieChart(poll: poll, pollVoters: 1)
               ],
             );
           }
@@ -80,7 +77,7 @@ class PollReport extends StatelessWidget{
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              PieDefault(poll: poll, pollVoters: pollVoters),
+              PieChart(poll: poll, pollVoters: pollVoters),
               //StopTime(poll: poll ),
             ],
           );

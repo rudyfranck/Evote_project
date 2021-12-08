@@ -82,9 +82,4 @@ export class UserResolver {
 	userCreated(@Context('pubSub') pubSub: any) {
 		return pubSub.asyncIterator('userCreated')
 	}
-
-	// @Mutation(() => Boolean)
-	// async vote(@Args('user_id') user_id: string, @Args('poll_id') poll_id: string, @Args('candidate_id') candidate_id: string ){
-	// 	return await this.userService.vote(user_id, poll_id, candidate_id)
-	// }
 }

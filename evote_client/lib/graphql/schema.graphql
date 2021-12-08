@@ -36,8 +36,6 @@ type Mutation {
   updatePoll(_id: String!, input: UpdatePollInput!): Boolean
   deletePoll(_id: String!): Boolean
   deletePolls: Boolean
-  addCandidateInPoll(poll_id: String!, user_id: String!): Boolean
-  vote(user_id: String!, poll_id: String, candidate_id: String): Boolean
   register(input: CreateUserInput!): User
   updateUser(_id: String!, input: UpdateUserInput!): Boolean
   deleteUser(_id: String!): Boolean
@@ -60,6 +58,10 @@ type Query {
   polls: [Poll!]
   poll(_id: String!): Poll
   pollVoters(_id: String!): Int
+  addCandidateInPoll(poll_id: String!, user_id: String!): Boolean
+  addManyCandidatesInPoll(poll_id: String!, user_email: [String]!): Boolean
+  addCandidate(poll_id: String!, user_email: String!): Boolean
+  vote(user_id: String!, poll_id: String, candidate_id: String): Poll
   hello: String!
   me: User
   users(offset: Int!, limit: Int!): [User!]

@@ -1,6 +1,6 @@
 import 'package:evote_app/page/widgets/header_widget.dart';
-import 'package:evote_app/page/widgets/my_app_bar.dart';
-import 'package:evote_app/page/widgets/nav_bar.dart';
+import 'package:evote_app/common/my_app_bar.dart';
+import 'package:evote_app/common/nav_bar.dart';
 import 'package:evote_app/page/widgets/profile_table.dart';
 import 'package:evote_client/polls_client.dart';
 import 'package:ferry/ferry.dart';

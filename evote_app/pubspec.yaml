@@ -55,11 +55,8 @@ dependencies:
   skeleton_loader: ^2.0.0+4
   flutter_easyloading: ^3.0.3
   timeago: ^3.1.0
-
-
-
-
-
+  flutter_slidable: ^1.1.0
+  modal_bottom_sheet: ^2.0.0
 
 
 dev_dependencies:
@@ -85,6 +82,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

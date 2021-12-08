@@ -29,7 +29,7 @@ query FetchPoll {
 }
 
 query FecthUsers{
-  users(offset:0, limit:100){
+  users(offset:0, limit:1000){
     _id
     username
     email
@@ -62,6 +62,46 @@ query pollVoters($_id:String! ){
   pollVoters(_id: $_id)
 }
 
+query addCandidate($user_email:String!,$poll_id:String!){
+  addCandidate(
+  poll_id:$poll_id
+  user_email:$user_email
+  )
+}
+
+query vote($user_id:String!,$poll_id:String!,$candidate_id:String!){
+  vote(
+    user_id:$user_id
+    poll_id:$poll_id
+  	candidate_id:$candidate_id)
+  {
+   _id
+        title
+        description
+        duration
+        createdAt
+        updatedAt
+        candidate{
+            _id
+            username
+            email
+            role
+            status
+            password
+            __typename
+            voters{
+                _id
+                username
+                email
+                role
+                status
+                password
+                __typename
+            }
+        }
+  }
+  
+}
 
 mutation register($input: CreateUserInput!){
   register (input: $input){
@@ -91,12 +131,19 @@ mutation login($input: LoginUserInput!){
 }
 
 
+mutation deletePoll($id: String!){
+  deletePoll(_id:$id)
+}
 
-mutation vote($user_id:String!,$poll_id:String!,$candidate_id:String!){
-  vote(
-    user_id:$user_id
-    poll_id:$poll_id
-  	candidate_id:$candidate_id)
-  
+mutation createPoll($input: CreatePollInput!){
+  createPoll(input:$input){
+    _id
+    title
+    duration
+    description
+    createdAt
+    updatedAt
+        __typename
+  }
 }
 

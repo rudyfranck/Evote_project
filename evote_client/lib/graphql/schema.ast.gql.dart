@@ -173,50 +173,6 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'Boolean'), isNonNull: false)),
       _i1.FieldDefinitionNode(
-          name: _i1.NameNode(value: 'addCandidateInPoll'),
-          directives: [],
-          args: [
-            _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'poll_id'),
-                directives: [],
-                type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: true),
-                defaultValue: null),
-            _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'user_id'),
-                directives: [],
-                type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: true),
-                defaultValue: null)
-          ],
-          type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'Boolean'), isNonNull: false)),
-      _i1.FieldDefinitionNode(
-          name: _i1.NameNode(value: 'vote'),
-          directives: [],
-          args: [
-            _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'user_id'),
-                directives: [],
-                type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: true),
-                defaultValue: null),
-            _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'poll_id'),
-                directives: [],
-                type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: false),
-                defaultValue: null),
-            _i1.InputValueDefinitionNode(
-                name: _i1.NameNode(value: 'candidate_id'),
-                directives: [],
-                type: _i1.NamedTypeNode(
-                    name: _i1.NameNode(value: 'String'), isNonNull: false),
-                defaultValue: null)
-          ],
-          type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'Boolean'), isNonNull: false)),
-      _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'register'),
           directives: [],
           args: [
@@ -392,6 +348,90 @@ const Query = _i1.ObjectTypeDefinitionNode(
           ],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'Int'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'addCandidateInPoll'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'poll_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'user_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Boolean'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'addManyCandidatesInPoll'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'poll_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'user_email'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name: _i1.NameNode(value: 'String'), isNonNull: false),
+                    isNonNull: true),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Boolean'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'addCandidate'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'poll_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'user_email'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Boolean'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'vote'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'user_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'poll_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'candidate_id'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Poll'), isNonNull: false)),
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'hello'),
           directives: [],

@@ -1,8 +1,8 @@
 import 'package:evote_app/page/widgets/header_widget.dart';
-import 'package:evote_app/page/widgets/my_app_bar.dart';
-import 'package:evote_app/page/widgets/nav_bar.dart';
-import 'package:evote_app/page/widgets/nor_poll_in_list.dart';
-import 'package:evote_app/page/widgets/poll_list.dart';
+import 'package:evote_app/common/my_app_bar.dart';
+import 'package:evote_app/common/nav_bar.dart';
+import 'package:evote_app/page/widgets/poll/nor_poll_in_list.dart';
+import 'package:evote_app/page/widgets/poll/poll_list.dart';
 import 'package:evote_client/polls_client.dart';
 import 'package:ferry/ferry.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
@@ -15,9 +15,9 @@ class HomePage extends StatelessWidget{
    HomePage({Key? key}) : super (key: key);
    final LocalStorage storage =  new LocalStorage('Auth');
    final pollsReq = GFetchPollReq();
-
   @override
   Widget build(BuildContext context){
+    final ct;
     return Scaffold(
       appBar: MyAppBar(),
       drawer: NavBar(),
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget{
                     return   Column(
                         children: [
                           for(var index = 0; index < polls.length; index++)
-                            PollList(poll: polls[index]),
+                             PollList(poll: polls[index]),
                         ],
                       );
                     },
@@ -90,15 +90,5 @@ class HomePage extends StatelessWidget{
       ),
       )
     );
-
   }
-   // Widget buildTime() {
-   //   var now = DateTime.now();
-   //   var ct = poll.createdAt.value;
-   //   DateTime startDate = DateTime.parse(ct);
-   //   var endDate = (startDate.add(Duration(days: poll.duration )));
-   //   var dur = endDate.difference(now).inMicroseconds;
-   // }
-
-
 }

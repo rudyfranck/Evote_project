@@ -53,8 +53,6 @@ type Mutation {
 	deleteUsers: Boolean! @hasRole(role: "admin")
 	login(input: LoginUserInput!): LoginResponse 
 	setRole(_id: String!, role: RoleEnum!): Boolean @isAuthenticated
-	#vote(user_id: String!, poll_id: String, candidate_id: String): Boolean
-	
 }
 
 type Subscription {
